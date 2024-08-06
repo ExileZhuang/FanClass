@@ -30,3 +30,14 @@ D:\FanClass\FanClass\Service\Api\Api\obj\Debug\net8.0\refint\Api.dll
 D:\FanClass\FanClass\Service\Api\Api\obj\Debug\net8.0\Api.pdb
 D:\FanClass\FanClass\Service\Api\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 D:\FanClass\FanClass\Service\Api\Api\obj\Debug\net8.0\ref\Api.dll
+D:\FanClass\FanClass\Service\Api\Api\obj\Debug\net8.0\Api.sourcelink.json
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Achievement.Application.xml
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Autofac.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Autofac.Extensions.DependencyInjection.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Dapper.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+D:\FanClass\FanClass\Service\Api\Api\bin\Debug\net8.0\StackExchange.Redis.dll

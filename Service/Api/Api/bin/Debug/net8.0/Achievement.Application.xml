@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api</name>
+    </assembly>
+    <members>
+        <member name="T:Api.Controllers.WeatherForecastController">
+            <summary>
+            天气预测接口
+            </summary>
+        </member>
+        <member name="F:Api.Controllers.WeatherForecastController.Summaries">
+            <summary>
+            初始化私有变量
+            </summary>
+        </member>
+        <member name="F:Api.Controllers.WeatherForecastController._logger">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{Api.Controllers.WeatherForecastController})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Api.Controllers.WeatherForecastController.Get">
+            <summary>
+            获取天气预测
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.WeatherForecast">
+            <summary>
+            天气预测
+            </summary>
+        </member>
+        <member name="P:Api.WeatherForecast.Date">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:Api.WeatherForecast.TemperatureC">
+            <summary>
+            温度
+            </summary>
+        </member>
+        <member name="P:Api.WeatherForecast.TemperatureF">
+            <summary>
+            温度
+            </summary>
+        </member>
+        <member name="P:Api.WeatherForecast.Summary">
+            <summary>
+            概要
+            </summary>
+        </member>
+        <member name="T:Program">
+            ----------------------------------
+            <copyright>FanClass</copyright>
+            <author>zhuangjl</author>
+            <email>3046524346@qq.com</email>
+            <log date="2024-08-05">创建</log>
+            ---------------------------------
+        </member>
+    </members>
+</doc>
