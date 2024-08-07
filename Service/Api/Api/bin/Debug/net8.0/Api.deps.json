@@ -12,7 +12,8 @@
           "Autofac.Extensions.DependencyInjection": "9.0.0",
           "Dapper": "2.1.35",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.7",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "Tools.Application": "1.0.0"
         },
         "runtime": {
           "Api.dll": {}
@@ -74,6 +75,18 @@
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.324.11423"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyModel/8.0.1": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0",
+          "System.Text.Json": "8.0.4"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
+            "assemblyVersion": "8.0.0.1",
+            "fileVersion": "8.0.724.31311"
           }
         }
       },
@@ -171,7 +184,21 @@
         }
       },
       "System.Diagnostics.DiagnosticSource/7.0.2": {},
-      "System.IO.Pipelines/5.0.1": {}
+      "System.IO.Pipelines/5.0.1": {},
+      "System.Text.Encodings.Web/8.0.0": {},
+      "System.Text.Json/8.0.4": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0"
+        }
+      },
+      "Tools.Application/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyModel": "8.0.1"
+        },
+        "runtime": {
+          "Tools.Application.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -228,6 +255,13 @@
       "sha512": "sha512-fGLiCRLMYd00JYpClraLjJTNKLmMJPnqxMaiRzEBIIvevlzxz33mXy39Lkd48hu1G+N21S7QpaO5ZzKsI6FRuA==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.1",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyModel/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5Ou6varcxLBzQ+Agfm0k0pnH7vrEITYlXMDuE6s7ZHlZHz6/G8XJ3iISZDr5rfwfge6RnXJ1+Wc479mMn52vjA==",
+      "path": "microsoft.extensions.dependencymodel/8.0.1",
+      "hashPath": "microsoft.extensions.dependencymodel.8.0.1.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging.Abstractions/8.0.1": {
       "type": "package",
@@ -312,6 +346,25 @@
       "sha512": "sha512-qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
       "path": "system.io.pipelines/5.0.1",
       "hashPath": "system.io.pipelines.5.0.1.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
+      "path": "system.text.encodings.web/8.0.0",
+      "hashPath": "system.text.encodings.web.8.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/8.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bAkhgDJ88XTsqczoxEMliSrpijKZHhbJQldhAmObj/RbrN3sU5dcokuXmWJWsdQAhiMJ9bTayWsL1C9fbbCRhw==",
+      "path": "system.text.json/8.0.4",
+      "hashPath": "system.text.json.8.0.4.nupkg.sha512"
+    },
+    "Tools.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

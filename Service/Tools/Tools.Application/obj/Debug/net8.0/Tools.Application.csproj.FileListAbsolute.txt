@@ -1,0 +1,14 @@
+D:\FanClass\FanClass\Service\Tools\Tools.Application\bin\Debug\net8.0\Tools.Application.deps.json
+D:\FanClass\FanClass\Service\Tools\Tools.Application\bin\Debug\net8.0\Tools.Application.dll
+D:\FanClass\FanClass\Service\Tools\Tools.Application\bin\Debug\net8.0\Tools.Application.pdb
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.csproj.AssemblyReference.cache
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.AssemblyInfoInputs.cache
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.AssemblyInfo.cs
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.csproj.CoreCompileInputs.cache
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.sourcelink.json
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.dll
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\refint\Tools.Application.dll
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\Tools.Application.pdb
+D:\FanClass\FanClass\Service\Tools\Tools.Application\obj\Debug\net8.0\ref\Tools.Application.dll
+D:\FanClass\FanClass\Service\Tools\Tools.Application\bin\Debug\net8.0\Tools.Application.xml

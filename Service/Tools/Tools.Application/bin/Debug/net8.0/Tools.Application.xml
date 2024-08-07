@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tools.Application</name>
+    </assembly>
+    <members>
+        <member name="T:FanClass.Services.Tools.AssemblyTool">
+            <summary>
+            反射工具类
+            </summary>
+        </member>
+        <member name="M:FanClass.Services.Tools.AssemblyTool.Load(System.Func{System.String,System.Boolean})">
+            <summary>
+            动态返回匹配func的所有程序集
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

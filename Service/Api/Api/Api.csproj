@@ -4,8 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	<GenerateDocumentationFile>True</GenerateDocumentationFile>
-	<DocumentationFile>Achievement.Application.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +16,10 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Tools\Tools.Application\Tools.Application.csproj" />
   </ItemGroup>
 
 </Project>

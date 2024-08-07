@@ -13,8 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-///反射实现Autofac注入:
-Console.WriteLine(builder.Environment.ApplicationName);
+foreach (var assembly in AssemblyTool.Load(s => s.Equals("Api")))
+{
+    Console.WriteLine(assembly.FullName);
+}
 
 ///跨域设置
 builder.Services.AddCors(options =>
@@ -26,8 +28,10 @@ builder.Services.AddCors(options =>
     }));
 
 var app = builder.Build();
+
 ///跨域
 app.UseCors("AllowCors");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
