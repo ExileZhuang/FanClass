@@ -1,2 +1,2 @@
 ﻿global using Microsoft.AspNetCore.Mvc;
-global using FanClass.Services.Tools;
+global using FanClass.Infrastructures.Tools;

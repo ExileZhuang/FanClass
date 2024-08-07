@@ -4,7 +4,7 @@
 ///<email>3046524346@qq.com</email>
 ///<log date="2024-08-06">创建</log>
 ///---------------------------------
-namespace FanClass.Services.Tools
+namespace FanClass.Infrastructures.Tools
 {
     /// <summary>
     /// 反射工具类

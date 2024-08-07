@@ -54,10 +54,6 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
-            "Dapper": {
-              "target": "Package",
-              "version": "[2.1.35, )"
-            },
             "Microsoft.Extensions.Caching.StackExchangeRedis": {
               "target": "Package",
               "version": "[8.0.7, )"
