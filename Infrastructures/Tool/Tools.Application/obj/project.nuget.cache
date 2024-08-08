@@ -1,12 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "mY7O0lA1VTI=",
+  "dgSpecHash": "5QQHJ2JwKs8=",
   "success": true,
-  "projectFilePath": "D:\\FanClass\\FanClass\\Infrastructures\\Tools\\Tools.Application\\Tools.Application.csproj",
+  "projectFilePath": "D:\\FanClass\\FanClass\\Infrastructures\\Tool\\Tools.Application\\Tool.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\poison\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.1\\microsoft.extensions.dependencymodel.8.0.1.nupkg.sha512",
     "C:\\Users\\poison\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\poison\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "获取包漏洞数据时出错: 无法加载源 https://api.nuget.org/v3/index.json 的服务索引。"
+    }
+  ]
 }

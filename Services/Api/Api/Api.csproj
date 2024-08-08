@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<DocumentationFile>Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Infrastructures\Tools\Tools.Application\Tools.Application.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructures\Tool\Tools.Application\Tool.Application.csproj" />
   </ItemGroup>
 
 </Project>
