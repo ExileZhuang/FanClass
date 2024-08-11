@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<DocumentationFile>Tools.Application.xml</DocumentationFile>
+	<DocumentationFile>Tool.Application.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,14 +2,18 @@
 //<copyright>FanClass</copyright>
 //<author>zhuangjl</author>
 //<email>3046524346@qq.com</email>
-//<log date="2024-08-07">创建</log>
+//<log date="2024-08-11">创建</log>
 //---------------------------------
 
-namespace FanClass.Services.User;
+namespace FanClass.Infrastructures.Repository;
 
 /// <summary>
-/// 用户模型
+/// 缓存中Key类型
 /// </summary>
-public class User
+public enum CacheKeyType
 {
+    /// <summary>
+    /// 用户
+    /// </summary>
+    UserInfo = 0,
 }

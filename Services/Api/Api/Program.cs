@@ -5,9 +5,6 @@
 //<log date="2024-08-05">´´½¨</log>
 //---------------------------------
 
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -50,7 +47,6 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(contain
 {
     containerBuilder.RegisterBuildCallback(container =>
     {
-        //DIContainer.RegisterContainer((IContainer)container);
     });
 });
 

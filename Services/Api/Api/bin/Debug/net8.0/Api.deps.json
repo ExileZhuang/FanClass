@@ -10,10 +10,9 @@
         "dependencies": {
           "Autofac": "8.0.0",
           "Autofac.Extensions.DependencyInjection": "9.0.0",
-          "Dapper": "2.1.35",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.7",
           "Swashbuckle.AspNetCore": "6.4.0",
-          "Tools.Application": "1.0.0"
+          "Tool.Application": "1.0.0"
         },
         "runtime": {
           "Api.dll": {}
@@ -39,14 +38,6 @@
           "lib/net8.0/Autofac.Extensions.DependencyInjection.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.0.0"
-          }
-        }
-      },
-      "Dapper/2.1.35": {
-        "runtime": {
-          "lib/net7.0/Dapper.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.1.35.13827"
           }
         }
       },
@@ -191,12 +182,12 @@
           "System.Text.Encodings.Web": "8.0.0"
         }
       },
-      "Tools.Application/1.0.0": {
+      "Tool.Application/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyModel": "8.0.1"
         },
         "runtime": {
-          "Tools.Application.dll": {}
+          "Tool.Application.dll": {}
         }
       }
     }
@@ -220,13 +211,6 @@
       "sha512": "sha512-tf+//4MBola256qaaVQqQ6tx2R57S8A8BFekRWNpHkpSFzRBPkU+/fEDUSrCjqldK/B2zRoDbsMcQmYy3PYGWg==",
       "path": "autofac.extensions.dependencyinjection/9.0.0",
       "hashPath": "autofac.extensions.dependencyinjection.9.0.0.nupkg.sha512"
-    },
-    "Dapper/2.1.35": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-YKRwjVfrG7GYOovlGyQoMvr1/IJdn+7QzNXJxyMh0YfFF5yvDmTYaJOVYWsckreNjGsGSEtrMTpnzxTUq/tZQw==",
-      "path": "dapper/2.1.35",
-      "hashPath": "dapper.2.1.35.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "type": "package",
@@ -361,7 +345,7 @@
       "path": "system.text.json/8.0.4",
       "hashPath": "system.text.json.8.0.4.nupkg.sha512"
     },
-    "Tools.Application/1.0.0": {
+    "Tool.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
