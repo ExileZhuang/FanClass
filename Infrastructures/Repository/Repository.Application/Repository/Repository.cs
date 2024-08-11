@@ -5,6 +5,9 @@
 //<log date="2024-08-10">创建</log>
 //---------------------------------
 
+using System.Data.Common;
+using System.Reflection;
+
 namespace FanClass.Infrastructures.Repository;
 
 /// <summary>
@@ -85,17 +88,183 @@ public class Repository<T> : IRepository<T> where T : class
         if (_cacheUsed)
         {
             var key = _cache!.GetKey(CacheKeyType.UserInfo, id.ToString());
+
             var (hasValue, value) = await _cache.TryGetValue(key);
+
+            if (hasValue)
+            {
+                var res = JsonConvert.DeserializeObject<T>(value);
+
+                if (res is not null)
+                {
+                    return (T)res;
+                }
+            }
         }
 
         using var dbConnection = new MySqlConnection(_connetMySqlString);
         dbConnection.Open();
 
-        var sql = $"SELECT * FROM {_tableName} WHERE Id=@Id";
+        var sql = $"SELECT * FROM {_tableName} WHERE Id=@Id;";
         var queryResult = await dbConnection.QueryAsync<T>(sql, new { Id = id });
 
         return queryResult.First();
     }
 
+    /// <summary>
+    /// 通过指定参数筛选数据
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
+    public async Task<IEnumerable<T>> Gets(Dictionary<string, object> parameters)
+    {
+        using var dbConnection = new MySqlConnection(_connetMySqlString);
+        dbConnection.Open();
+
+        var paramString = new string[parameters.Count];
+        var index = 0;
+
+        foreach (var keyValue in parameters)
+        {
+            paramString[index++] = $"{keyValue.Key}=@{keyValue}";
+        }
+
+        var sql = $"SELECT * FROM {_tableName} WHERE {string.Join(' ', paramString)};";
+
+        return await dbConnection.QueryAsync<T>(sql, parameters);
+    }
+
     #endregion 查询
+
+    #region 插入
+
+    /// <summary>
+    /// 插入单个实体
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
+    public async Task<bool> Insert(T entity)
+    {
+        using var dbConnection = new MySqlConnection(_connetMySqlString);
+        dbConnection.Open();
+
+        var names = new List<string>();
+        var values = new List<string>();
+
+        foreach (var pInfo in entity.GetType().GetProperties())
+        {
+            names.Add(pInfo.Name);
+
+            var value = pInfo!.GetValue(entity)!.ToString() ?? string.Empty;
+            if (pInfo.PropertyType == typeof(string))
+            {
+                value = "'" + value + "'";
+            }
+
+            values.Add(value);
+        }
+
+        var sql = $"INSERT INTO {_tableName} ({string.Join(", ", names)}) VALUES ({string.Join(",", values)});";
+
+        var result = await dbConnection.ExecuteAsync(sql);
+
+        return result > 0;
+    }
+
+    #endregion 插入
+
+    #region 删除
+
+    /// <summary>
+    /// 删除对应主键的唯一实体
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<int> Delete(long id)
+    {
+        using var db = new MySqlConnection(_connetMySqlString);
+        db.Open();
+
+        var sql = $"DELETE FROM {_tableName} WHERE Id=@Id;";
+
+        return await db.ExecuteAsync(sql, new { Id = id });
+    }
+
+    /// <summary>
+    /// 删除复合参数的所有实体
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
+    public async Task<int> Deletes(Dictionary<string, object> parameters)
+    {
+        using var db = new MySqlConnection(_connetMySqlString);
+        db.Open();
+
+        var selections = new string[parameters.Count];
+
+        int index = 0;
+
+        foreach (var keyValue in parameters)
+        {
+            var selection = string.Empty;
+            if (keyValue.Value is string)
+            {
+                selection = $"{keyValue.Key}='{keyValue.Value}'";
+            }
+            else
+            {
+                selection = selection + $"{keyValue.Value}";
+            }
+
+            selections[index++] = selection;
+        }
+
+        var sql = $"DELETE FROM {_tableName} WHERE {string.Join(' ', selections)};";
+
+        return await db.ExecuteAsync(sql);
+    }
+
+    #endregion 删除
+
+    #region 更新
+
+    /// <summary>
+    /// 更新单个实体
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
+    public async Task<int> Update(T entity)
+    {
+        using var db = new MySqlConnection(_connetMySqlString);
+        db.Open();
+
+        var updates = new List<string>();
+
+        foreach (var pInfo in entity.GetType().GetProperties())
+        {
+            var value = pInfo!.GetValue(entity)!.ToString() ?? string.Empty;
+
+            string item;
+
+            if (pInfo.PropertyType == typeof(string))
+            {
+                item = $"{pInfo.Name}='{value}'";
+            }
+            else
+            {
+                item = $"{pInfo.Name}={value}";
+            }
+
+            updates.Add(item);
+        }
+
+        var sql = $"UPDATE {_tableName} SET {string.Join(',', updates)} WHERE Id=@Id;";
+
+        var info = entity.GetType().GetProperty("Id");
+        var id = (long)info?.GetValue(obj: entity);
+
+        return await db.ExecuteAsync(sql, new { Id = id });
+    }
+
+    #endregion 更新
 }

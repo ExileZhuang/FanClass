@@ -35,4 +35,17 @@ public interface ICache
     Task<(bool hasValue, string value)> TryGetValue(string key, int defaultDb = 0);
 
     #endregion 缓存中查询
+
+    #region 插入缓存
+
+    /// <summary>
+    /// 插入缓存
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    Task<bool> TryPut(string key, string value, TimeSpan time);
+
+    #endregion 插入缓存
 }

@@ -64,8 +64,11 @@ public class Cache : ICache
     public async Task<(bool hasValue, string value)> TryGetValue(string key, int defaultDb = 0)
     {
         using var connetion = await ConnectionMultiplexer.ConnectAsync(_connetRedisString);
+
         var db = connetion.GetDatabase(defaultDb);
         var value = await db.StringGetAsync(key);
+
+        return value.HasValue ? (true, value.ToString()) : (false, string.Empty);
     }
 
     #endregion 缓存中查询
