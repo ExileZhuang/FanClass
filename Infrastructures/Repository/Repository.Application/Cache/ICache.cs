@@ -48,4 +48,15 @@ public interface ICache
     Task<bool> TryPut(string key, string value, TimeSpan time);
 
     #endregion 插入缓存
+
+    #region 缓存中删除
+
+    /// <summary>
+    /// 删除缓存中指定Key的对应值
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    Task<int> TryDelete(string key);
+
+    #endregion 缓存中删除
 }

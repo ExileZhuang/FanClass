@@ -5,9 +5,6 @@
 //<log date="2024-08-10">创建</log>
 //---------------------------------
 
-using System.Data.Common;
-using System.Reflection;
-
 namespace FanClass.Infrastructures.Repository;
 
 /// <summary>
@@ -82,12 +79,13 @@ public class Repository<T> : IRepository<T> where T : class
     /// 尝试在Redis中通过主键获取，如果Redis中没有则去数据库中查询主键获取
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="type"></param>
     /// <returns></returns>
-    public async Task<T> TryCacheGet(long id)
+    public async Task<T> TryCacheGet(long id, CacheKeyType type)
     {
         if (_cacheUsed)
         {
-            var key = _cache!.GetKey(CacheKeyType.UserInfo, id.ToString());
+            var key = _cache!.GetKey(type, id.ToString());
 
             var (hasValue, value) = await _cache.TryGetValue(key);
 
@@ -102,6 +100,16 @@ public class Repository<T> : IRepository<T> where T : class
             }
         }
 
+        return await Get(id);
+    }
+
+    /// <summary>
+    /// 主键在数据库中获取
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<T> Get(long id)
+    {
         using var dbConnection = new MySqlConnection(_connetMySqlString);
         dbConnection.Open();
 
@@ -129,7 +137,7 @@ public class Repository<T> : IRepository<T> where T : class
             paramString[index++] = $"{keyValue.Key}=@{keyValue}";
         }
 
-        var sql = $"SELECT * FROM {_tableName} WHERE {string.Join(' ', paramString)};";
+        var sql = $"SELECT * FROM {_tableName} WHERE {string.Join(" and ", paramString)};";
 
         return await dbConnection.QueryAsync<T>(sql, parameters);
     }
@@ -169,6 +177,36 @@ public class Repository<T> : IRepository<T> where T : class
         var result = await dbConnection.ExecuteAsync(sql);
 
         return result > 0;
+    }
+
+    /// <summary>
+    /// 将数据T插入到数据库中，并写入缓存，过期时间为expired
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <param name="expired"></param>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public async Task<bool> TryCacheInsert(T entity, TimeSpan expired, CacheKeyType type)
+    {
+        if (!_cacheUsed)
+        {
+            return false;
+        }
+
+        string cacheKey = _cache!.GetKey(type, (entity!.GetType())?.GetProperty("Id")!.ToString() ?? string.Empty);
+
+        string value = JsonConvert.SerializeObject(entity);
+
+        bool putSucc = await _cache.TryPut(cacheKey, value, expired);
+
+        if (!putSucc)
+        {
+            return false;
+        }
+
+        putSucc = await Insert(entity);
+
+        return putSucc;
     }
 
     #endregion 插入
@@ -219,7 +257,7 @@ public class Repository<T> : IRepository<T> where T : class
             selections[index++] = selection;
         }
 
-        var sql = $"DELETE FROM {_tableName} WHERE {string.Join(' ', selections)};";
+        var sql = $"DELETE FROM {_tableName} WHERE {string.Join(" and ", selections)};";
 
         return await db.ExecuteAsync(sql);
     }
@@ -261,9 +299,61 @@ public class Repository<T> : IRepository<T> where T : class
         var sql = $"UPDATE {_tableName} SET {string.Join(',', updates)} WHERE Id=@Id;";
 
         var info = entity.GetType().GetProperty("Id");
-        var id = (long)info?.GetValue(obj: entity);
+        var id = info?.GetValue(obj: entity);
 
         return await db.ExecuteAsync(sql, new { Id = id });
+    }
+
+    /// <summary>
+    /// 批量更新多个实体
+    /// </summary>
+    /// <param name="selections"></param>
+    /// <param name="updates"></param>
+    /// <returns></returns>
+    public async Task<int> Updates(Dictionary<string, object> selections, Dictionary<string, object> updates)
+    {
+        using var db = new MySqlConnection(_connetMySqlString);
+        db.Open();
+
+        var listUpdates = new List<string>();
+
+        foreach (var item in updates)
+        {
+            var update = string.Empty;
+
+            if (item.Value.GetType() == typeof(string))
+            {
+                update = $"{item.Key}='{item.Value}'";
+            }
+            else
+            {
+                update = $"{item.Key}={item.Value}";
+            }
+
+            listUpdates.Add(update);
+        }
+
+        var listSelections = new List<string>();
+
+        foreach (var item in selections)
+        {
+            var selection = string.Empty;
+
+            if (item.Value.GetType() == typeof(string))
+            {
+                selection = $"{item.Key}='{item.Value}'";
+            }
+            else
+            {
+                selection = $"{item.Key}={item.Value}"; ;
+            }
+
+            listSelections.Add(selection);
+        }
+
+        var sql = $"UPDATE {_tableName} SET {string.Join(',', listUpdates)} WHERE {string.Join(" and ", listSelections)};";
+
+        return await db.ExecuteAsync(sql);
     }
 
     #endregion 更新
