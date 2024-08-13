@@ -64,7 +64,6 @@ public class Cache : ICache
     public async Task<(bool hasValue, string value)> TryGetValue(string key, int defaultDb = 0)
     {
         using var connetion = await ConnectionMultiplexer.ConnectAsync(_connetRedisString);
-
         var db = connetion.GetDatabase(defaultDb);
 
         var value = await db.StringGetAsync(key);
@@ -73,4 +72,42 @@ public class Cache : ICache
     }
 
     #endregion 缓存中查询
+
+    #region 插入缓存
+
+    /// <summary>
+    /// 将指定key与value插入到缓存中
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <param name="expired"></param>
+    /// <param name="defaultDb"></param>
+    /// <returns></returns>
+    public async Task<bool> TryPut(string key, string value, TimeSpan expired, int defaultDb = 0)
+    {
+        using var connetion = await ConnectionMultiplexer.ConnectAsync(_connetRedisString);
+        var db = connetion.GetDatabase(defaultDb);
+
+        return await db.StringSetAsync(key, value, expired);
+    }
+
+    #endregion 插入缓存
+
+    #region 缓存中删除
+
+    /// <summary>
+    /// 缓存中删除指定Key的元素
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="defaultDb"></param>
+    /// <returns></returns>
+    public async Task<bool> TryDelete(string key, int defaultDb = 0)
+    {
+        using var connetion = await ConnectionMultiplexer.ConnectAsync(_connetRedisString);
+        var db = connetion.GetDatabase(defaultDb);
+
+        return await db.KeyDeleteAsync(key);
+    }
+
+    #endregion 缓存中删除
 }

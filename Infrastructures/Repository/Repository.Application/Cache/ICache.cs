@@ -44,8 +44,9 @@ public interface ICache
     /// <param name="key"></param>
     /// <param name="value"></param>
     /// <param name="time"></param>
+    /// <param name="defaultDb"></param>
     /// <returns></returns>
-    Task<bool> TryPut(string key, string value, TimeSpan time);
+    Task<bool> TryPut(string key, string value, TimeSpan time, int defaultDb = 0);
 
     #endregion 插入缓存
 
@@ -55,8 +56,9 @@ public interface ICache
     /// 删除缓存中指定Key的对应值
     /// </summary>
     /// <param name="key"></param>
+    /// <param name="defaultDb"></param>
     /// <returns></returns>
-    Task<int> TryDelete(string key);
+    Task<bool> TryDelete(string key, int defaultDb = 0);
 
     #endregion 缓存中删除
 }
