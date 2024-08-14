@@ -5,8 +5,6 @@
 //<log date="2024-08-13">创建</log>
 //---------------------------------
 
-namespace FanClass.Services.User;
-
 /// <summary>
 /// 用户业务逻辑实现层
 /// </summary>
@@ -25,4 +23,18 @@ public class UserService : IUserService
     {
         _userRepository = userRepository;
     }
+
+    #region 获取用户
+
+    /// <summary>
+    /// 根据主键Id获取用户
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<User?> GetUser(long id)
+    {
+        return await _userRepository.Get(id);
+    }
+
+    #endregion 获取用户
 }

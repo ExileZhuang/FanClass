@@ -81,7 +81,7 @@ public class Repository<T> : IRepository<T> where T : class
     /// <param name="id"></param>
     /// <param name="type"></param>
     /// <returns></returns>
-    public async Task<T> TryCacheGet(long id, CacheKeyType type)
+    public async Task<T?> TryCacheGet(long id, CacheKeyType type)
     {
         if (_cacheUsed)
         {
@@ -108,7 +108,7 @@ public class Repository<T> : IRepository<T> where T : class
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public async Task<T> Get(long id)
+    public async Task<T?> Get(long id)
     {
         using var dbConnection = new MySqlConnection(_connetMySqlString);
         dbConnection.Open();
@@ -116,7 +116,7 @@ public class Repository<T> : IRepository<T> where T : class
         var sql = $"SELECT * FROM {_tableName} WHERE Id=@Id;";
         var queryResult = await dbConnection.QueryAsync<T>(sql, new { Id = id });
 
-        return queryResult.First();
+        return queryResult.First() ?? null;
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class Repository<T> : IRepository<T> where T : class
     /// </summary>
     /// <param name="parameters"></param>
     /// <returns></returns>
-    public async Task<IEnumerable<T>> Gets(Dictionary<string, object> parameters)
+    public async Task<IEnumerable<T>?> Gets(Dictionary<string, object> parameters)
     {
         using var dbConnection = new MySqlConnection(_connetMySqlString);
         dbConnection.Open();
@@ -139,7 +139,7 @@ public class Repository<T> : IRepository<T> where T : class
 
         var sql = $"SELECT * FROM {_tableName} WHERE {string.Join(" and ", paramString)};";
 
-        return await dbConnection.QueryAsync<T>(sql, parameters);
+        return await dbConnection.QueryAsync<T>(sql, parameters) ?? null;
     }
 
     #endregion 查询

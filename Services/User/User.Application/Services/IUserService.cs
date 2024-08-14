@@ -12,4 +12,14 @@ namespace FanClass.Services.User;
 /// </summary>
 public interface IUserService
 {
+    #region 获取用户
+
+    /// <summary>
+    /// 根据主键Id获取用户
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task<User?> GetUser(long id);
+
+    #endregion 获取用户
 }

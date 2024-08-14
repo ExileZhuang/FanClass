@@ -20,21 +20,21 @@ public interface IRepository<T>
     /// <param name="id"></param>
     /// <param name="type"></param>
     /// <returns></returns>
-    Task<T> TryCacheGet(long id, CacheKeyType type);
+    Task<T?> TryCacheGet(long id, CacheKeyType type);
 
     /// <summary>
     /// 在数据库中获取
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<T> Get(long id);
+    Task<T?> Get(long id);
 
     /// <summary>
     /// 根据指定参数筛选MySql中数据
     /// </summary>
     /// <param name="parameters"></param>
     /// <returns></returns>
-    Task<IEnumerable<T>> Gets(Dictionary<string, object> parameters);
+    Task<IEnumerable<T>?> Gets(Dictionary<string, object> parameters);
 
     #endregion 查询
 
