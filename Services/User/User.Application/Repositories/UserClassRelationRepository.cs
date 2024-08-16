@@ -2,15 +2,15 @@
 //<copyright>FanClass</copyright>
 //<author>zhuangjl</author>
 //<email>3046524346@qq.com</email>
-//<log date="2024-08-14">创建</log>
+//<log date="2024-08-15">创建</log>
 //---------------------------------
 
 namespace FanClass.Services.Users;
 
 /// <summary>
-/// 课堂仓储接口实现类
+/// 学生课堂关系接口实现类
 /// </summary>
-public class ClassRepository : Repository<Class>, IRepository<Class>
+public class UserClassRelationRepository : Repository<UserClassRelation>, IUserClassRelationRepository
 {
     /// <summary>
     /// 构造函数
@@ -18,7 +18,7 @@ public class ClassRepository : Repository<Class>, IRepository<Class>
     /// <param name="configuration"></param>
     /// <param name="tableName"></param>
     /// <param name="dbStoreKey"></param>
-    public ClassRepository(IConfiguration configuration, string tableName = "fc_classes", string dbStoreKey = "MySql")
+    public UserClassRelationRepository(IConfiguration configuration, string tableName = "fc_users_classes", string dbStoreKey = "MySql")
         : base(configuration, tableName, dbStoreKey)
     {
     }

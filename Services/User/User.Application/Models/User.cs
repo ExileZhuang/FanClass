@@ -5,7 +5,7 @@
 //<log date="2024-08-07">创建</log>
 //---------------------------------
 
-namespace FanClass.Services.User;
+namespace FanClass.Services.Users;
 
 /// <summary>
 /// 用户模型

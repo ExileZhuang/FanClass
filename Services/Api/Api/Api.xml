@@ -4,5 +4,28 @@
         <name>Api</name>
     </assembly>
     <members>
+        <member name="T:FanClass.Services.Api.UserController">
+            <summary>
+            用户API控制层
+            </summary>
+        </member>
+        <member name="F:FanClass.Services.Api.UserController._userServce">
+            <summary>
+            用户业务逻辑接口
+            </summary>
+        </member>
+        <member name="M:FanClass.Services.Api.UserController.#ctor(FanClass.Services.Users.IUserService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="userServce"></param>
+        </member>
+        <member name="M:FanClass.Services.Api.UserController.GetUser(System.Int64)">
+            <summary>
+            通过Id获取用户信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>User.Application</name>
+    </assembly>
+    <members>
+        <member name="T:FanClass.Services.Users.UserIdentity">
+            <summary>
+            用户身份
+            </summary>
+        </member>
+        <member name="F:FanClass.Services.Users.UserIdentity.Student">
+            <summary>
+            学生
+            </summary>
+        </member>
+        <member name="F:FanClass.Services.Users.UserIdentity.Teacher">
+            <summary>
+            老师
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.Class">
+            <summary>
+            课堂模型
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.Class.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.Class.Name">
+            <summary>
+            课程名字
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.Class.ColSize">
+            <summary>
+            列大小
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.Class.RowSize">
+            <summary>
+            行大小
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.Class.Number">
+            <summary>
+            课序号
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.Class.DateCreated">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.Class.DateModified">
+            <summary>
+            上一次修改时间
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.User">
+            <summary>
+            用户模型
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.Password">
+            <summary>
+            密码（已加密）
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.Number">
+            <summary>
+            学号/证件号
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.Mobile">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.Identity">
+            <summary>
+            身份
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.DateCreated">
+            <summary>
+            创建日期
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.User.DateModified">
+            <summary>
+            上一次修改日期
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.UserClassRelation">
+            <summary>
+            用户课堂关系：多对多
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.UserClassRelation.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.UserClassRelation.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.UserClassRelation.ClassId">
+            <summary>
+            课堂Id
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.UserClassRelation.ColIndex">
+            <summary>
+            该用户所选列
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.UserClassRelation.RowIndex">
+            <summary>
+            用户所选行
+            </summary>
+        </member>
+        <member name="P:FanClass.Services.Users.UserClassRelation.SelectedTime">
+            <summary>
+            该记录是否被删除
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.ClassRepository">
+            <summary>
+            课堂仓储接口实现类
+            </summary>
+        </member>
+        <member name="M:FanClass.Services.Users.ClassRepository.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configuration"></param>
+            <param name="tableName"></param>
+            <param name="dbStoreKey"></param>
+        </member>
+        <member name="T:FanClass.Services.Users.IClassRepository">
+            <summary>
+            班级仓储接口
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.IUserClassRelationRepository">
+            <summary>
+            学生-课堂关系接口
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.IUserRepository">
+            <summary>
+            用户仓储接口
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.UserClassRelationRepository">
+            <summary>
+            学生课堂关系接口实现类
+            </summary>
+        </member>
+        <member name="M:FanClass.Services.Users.UserClassRelationRepository.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configuration"></param>
+            <param name="tableName"></param>
+            <param name="dbStoreKey"></param>
+        </member>
+        <member name="T:FanClass.Services.Users.UserRepository">
+            <summary>
+            用户仓储接口实现类
+            </summary>
+        </member>
+        <member name="M:FanClass.Services.Users.UserRepository.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configuration"></param>
+            <param name="tableName"></param>
+            <param name="dbStoreKey"></param>
+            <param name="redisStoreKey"></param>
+        </member>
+        <member name="T:FanClass.Services.Users.ClassService">
+            <summary>
+            课堂业务逻辑实现类
+            </summary>
+        </member>
+        <member name="F:FanClass.Services.Users.ClassService._classRepository">
+            <summary>
+            课堂仓储接口
+            </summary>
+        </member>
+        <member name="M:FanClass.Services.Users.ClassService.#ctor(FanClass.Services.Users.IClassRepository)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="classRepository"></param>
+        </member>
+        <member name="T:FanClass.Services.Users.IClassService">
+            <summary>
+            课堂业务逻辑接口
+            </summary>
+        </member>
+        <member name="T:FanClass.Services.Users.IUserService">
+            <summary>
+            用户业务逻辑层
+            </summary>
+        </member>
+        <member name="M:FanClass.Services.Users.IUserService.GetUser(System.Int64)">
+            <summary>
+            根据主键Id获取用户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UserService">
+            <summary>
+            用户业务逻辑实现层
+            </summary>
+        </member>
+        <member name="F:UserService._userRepository">
+            <summary>
+            用户仓储接口
+            </summary>
+        </member>
+        <member name="M:UserService.#ctor(FanClass.Services.Users.IUserRepository)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="userRepository"></param>
+        </member>
+        <member name="M:UserService.GetUser(System.Int64)">
+            <summary>
+            根据主键Id获取用户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

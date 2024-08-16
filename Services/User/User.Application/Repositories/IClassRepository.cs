@@ -5,7 +5,7 @@
 //<log date="2024-08-14">创建</log>
 //---------------------------------
 
-namespace FanClass.Services.User;
+namespace FanClass.Services.Users;
 
 /// <summary>
 /// 班级仓储接口

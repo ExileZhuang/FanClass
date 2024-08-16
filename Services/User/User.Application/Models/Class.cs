@@ -5,7 +5,7 @@
 //<log date="2024-08-14">创建</log>
 //---------------------------------
 
-namespace FanClass.Services.User;
+namespace FanClass.Services.Users;
 
 /// <summary>
 /// 课堂模型
@@ -22,7 +22,7 @@ public class Class
     /// <summary>
     /// 课程名字
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
     /// <summary>
     /// 列大小
@@ -37,7 +37,7 @@ public class Class
     /// <summary>
     /// 课序号
     /// </summary>
-    public string Number { get; set; }
+    public string Number { get; set; } = string.Empty;
 
     /// <summary>
     /// 创建时间

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tool.Application</name>
+    </assembly>
+    <members>
+        <member name="T:FanClass.Infrastructures.Tools.AssemblyTool">
+            <summary>
+            反射工具类
+            </summary>
+        </member>
+        <member name="M:FanClass.Infrastructures.Tools.AssemblyTool.Load(System.Func{System.String,System.Boolean})">
+            <summary>
+            动态返回匹配func的所有程序集
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FanClass.Infrastructures.Tools.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:FanClass.Infrastructures.Tools.Result.State">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:FanClass.Infrastructures.Tools.Result.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:FanClass.Infrastructures.Tools.Result.Success(System.Object)">
+            <summary>
+            成功
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FanClass.Infrastructures.Tools.Result.Error(System.Object)">
+            <summary>
+            失败
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FanClass.Infrastructures.Tools.Result.NotFound">
+            <summary>
+            未找到
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

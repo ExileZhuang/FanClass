@@ -7,7 +7,7 @@
 
 using Microsoft.Extensions.Configuration;
 
-namespace FanClass.Services.User;
+namespace FanClass.Services.Users;
 
 /// <summary>
 /// 用户仓储接口实现类
